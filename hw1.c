@@ -37,6 +37,26 @@ int main() {
 		}
 	}
 
-	//if (fork_count == 
+	if (fork_count == 1) {
+		printf("(n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n");
+		exit(0);
+	}
+
+	else if (fork_count == 2) {
+		
+	}
+	
+	else if (fork_count == 3) {
+	
+	}
+
+	else if (fork_count == 4) {
+	
+	}
+
+	if (pid > 0) {
+		pid = wait();
+		printf("my child %d has terminated!! :(", pid);
+	}
 }
 		
