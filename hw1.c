@@ -10,7 +10,7 @@ int main() {
 	int status;
 	int fork_count;
 
-	for (fork_count = 0; fork_count < NUM_FORKS; fork_count++) {
+	for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
 		pid = fork();
 
 		if (pid > 0) {//Parent process
@@ -25,6 +25,7 @@ int main() {
 		}
 	}
 
+
 	if (pid == 0) { //Child
 		printf("I am child #%d and my pid is %d. My parent is %d. \n", fork_count, getpid(), getppid());
 	}
@@ -35,5 +36,7 @@ int main() {
 			pid = wait(&status);
 		}
 	}
+
+	//if (fork_count == 
 }
 		
