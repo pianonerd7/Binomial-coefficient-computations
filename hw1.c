@@ -33,15 +33,7 @@ int factorial(int n) {
 }
 
 int main() {
-	int i;
 
-	//for (i = 2; i < 10; i++) {
-		printf("binomailcoef of %d is %d \n", 10, binomialCoefficient(10, 8));
-		//printf("factorial of %d is %d \n", 10, factorial(10));
-	//}
-
-
-/*
 	pid_t pid;
 	int status;
 	int fork_count;
@@ -77,17 +69,19 @@ int main() {
 
 		else if (fork_count == 2) {
 			sleep(3);
-			for(i = count; i < 10; i+=2) {
-			printf("%d\n", i);
-			sleep(4);
+
+			for (i = 2; i <= 10; i+=2) {
+				printf("binomailcoef of %d is %d \n", i, binomialCoefficient(i, i-2));
+				sleep(4);
 			}
 		}
 	
 		else if (fork_count == 3) {
 	
 			sleep(5);
-			for(i = count+1; i < 10; i+=2) {
-				printf("%d\n", i);
+
+			for (i = 3; i < 10; i+=2) {
+				printf("binomailcoef of %d is %d \n", i, binomialCoefficient(i, i-2));
 				sleep(4);
 			}
 		}
@@ -106,6 +100,6 @@ int main() {
 			printf("my child %d with fork %d has terminated! \n", pid, fork_count);
 		}
 	}
-*/
+
 }
 		
