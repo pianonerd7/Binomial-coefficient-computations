@@ -90,7 +90,7 @@ int main() {
 		}
 
 		else if (fork_count == 4) {
-			sleep(15);
+			sleep(20);
 			execvp(cat_file, cat_args);
 		}
 }
