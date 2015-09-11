@@ -41,6 +41,9 @@ int main() {
 	int count = 0;
 	int i;
 
+	const char * cat_file = "cat";
+	char * const cat_args [] = {"ls -l", "", NULL};
+
 	for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
 		pid = fork();
 
@@ -71,7 +74,7 @@ int main() {
 			sleep(3);
 
 			for (i = 2; i <= 10; i+=2) {
-				printf("binomailcoef of %d is %d \n", i, binomialCoefficient(i, i-2));
+				printf("%d binomailcoef of %d is %d \n", fork_count, i, binomialCoefficient(i, i-2));
 				sleep(4);
 			}
 		}
@@ -81,13 +84,14 @@ int main() {
 			sleep(5);
 
 			for (i = 3; i < 10; i+=2) {
-				printf("binomailcoef of %d is %d \n", i, binomialCoefficient(i, i-2));
+				printf("%d binomailcoef of %d is %d \n", fork_count, i, binomialCoefficient(i, i-2));
 				sleep(4);
 			}
 		}
 
 		else if (fork_count == 4) {
 			sleep(15);
+			execvp(cat_file, cat_args);
 		}
 }
 
@@ -95,7 +99,7 @@ int main() {
 	else { //Parent
 		printf("I am the parent, my pid is %d\n.", getpid());
 
-		for (fork_count = 0; fork_count < NUM_FORKS; fork_count++) {
+		for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
 			pid = wait(&status);
 			printf("my child %d with fork %d has terminated! \n", pid, fork_count);
 		}
