@@ -4,8 +4,47 @@
 
 #define NUM_FORKS 4
 
-int main() {
+int binomialCoefficient(int n, int k) {
 
+	int factN;
+	int factK;
+	int factNK;
+
+	factN = factorial(n);
+	factK = factorial(k);
+	factNK = factorial(n-k);
+
+	printf("factN = %d, factK = %d, factNK = %d \n", factN, factK, factNK);
+
+	return factN/(factK-factNK);	
+}
+
+int factorial(int n) {
+
+	if (n == 0) {
+		return 1;
+	}
+
+	int product = 1;
+	int i;
+
+	for (i = n; i > 0; i--) {
+		product = product * i;
+	}
+
+	return product;
+}
+
+int main() {
+	int i;
+
+	for (i = 2; i < 10; i++) {
+		printf("binomailcoef of %d is %d \n", i, binomialCoefficient(i, i-2));
+		//printf("factorial of %d is %d \n", i, factorial(i));
+	}
+
+
+/*
 	pid_t pid;
 	int status;
 	int fork_count;
@@ -70,6 +109,6 @@ int main() {
 			printf("my child %d with fork %d has terminated! \n", pid, fork_count);
 		}
 	}
-
+*/
 }
 		
