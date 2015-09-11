@@ -11,23 +11,17 @@ int binomialCoefficient(int n, int k) {
 	int factNK;
 
 	int denom;
-	int quotient;
 
 	factN = factorial(n);
 	factK = factorial(k);
 	factNK = factorial(n-k);
 	
 	denom = factK * factNK;
-	quotient = factN/denom;
 
-	return quotient;
+	return factN/denom;
 }
 
 int factorial(int n) {
-
-	if (n == 0) {
-		return 1;
-	}
 
 	int product = 1;
 	int i;
