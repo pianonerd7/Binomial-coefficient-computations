@@ -10,13 +10,17 @@ int binomialCoefficient(int n, int k) {
 	int factK;
 	int factNK;
 
+	int denom;
+	int quotient;
+
 	factN = factorial(n);
 	factK = factorial(k);
 	factNK = factorial(n-k);
+	
+	denom = factK * factNK;
+	quotient = factN/denom;
 
-	printf("factN = %d, factK = %d, factNK = %d \n", factN, factK, factNK);
-
-	return factN/(factK-factNK);	
+	return quotient;
 }
 
 int factorial(int n) {
@@ -31,17 +35,16 @@ int factorial(int n) {
 	for (i = n; i > 0; i--) {
 		product = product * i;
 	}
-
 	return product;
 }
 
 int main() {
 	int i;
 
-	for (i = 2; i < 10; i++) {
-		printf("binomailcoef of %d is %d \n", i, binomialCoefficient(i, i-2));
-		//printf("factorial of %d is %d \n", i, factorial(i));
-	}
+	//for (i = 2; i < 10; i++) {
+		printf("binomailcoef of %d is %d \n", 10, binomialCoefficient(10, 8));
+		//printf("factorial of %d is %d \n", 10, factorial(10));
+	//}
 
 
 /*
