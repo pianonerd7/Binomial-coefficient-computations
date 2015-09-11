@@ -10,6 +10,9 @@ int main() {
 	int status;
 	int fork_count;
 
+	int count = 0;
+	int i;
+
 	for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
 		pid = fork();
 
@@ -31,23 +34,31 @@ int main() {
 	
 
 
-	if (fork_count == 1) {
-		printf("%d - (n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n", getpid());
-		exit(0);
-	}
+		if (fork_count == 1) {
+			printf("%d - (n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n", getpid());
+			exit(0);
+		}
 
-	else if (fork_count == 2) {
-		sleep(10);
-	}
+		else if (fork_count == 2) {
+			sleep(3);
+			for(i = count; i < 10; i+=2) {
+			printf("%d\n", i);
+			sleep(4);
+			}
+		}
 	
-	else if (fork_count == 3) {
+		else if (fork_count == 3) {
 	
-		sleep(10);
-	}
+			sleep(5);
+			for(i = count+1; i < 10; i+=2) {
+				printf("%d\n", i);
+				sleep(4);
+			}
+		}
 
-	else if (fork_count == 4) {
-		sleep(10);
-	}
+		else if (fork_count == 4) {
+			sleep(15);
+		}
 }
 
 
@@ -56,7 +67,7 @@ int main() {
 
 		for (fork_count = 0; fork_count < NUM_FORKS; fork_count++) {
 			pid = wait(&status);
-			printf("my child %d has terminated! \n", pid);
+			printf("my child %d with fork %d has terminated! \n", pid, fork_count);
 		}
 	}
 
