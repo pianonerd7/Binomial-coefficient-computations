@@ -28,35 +28,37 @@ int main() {
 
 	if (pid == 0) { //Child
 		printf("I am child #%d and my pid is %d. My parent is %d. \n", fork_count, getpid(), getppid());
+	
+
+
+	if (fork_count == 1) {
+		printf("%d - (n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n", getpid());
+		exit(0);
 	}
+
+	else if (fork_count == 2) {
+		sleep(10);
+	}
+	
+	else if (fork_count == 3) {
+	
+		sleep(10);
+	}
+
+	else if (fork_count == 4) {
+		sleep(10);
+	}
+}
+
+
 	else { //Parent
 		printf("I am the parent, my pid is %d\n.", getpid());
 
 		for (fork_count = 0; fork_count < NUM_FORKS; fork_count++) {
 			pid = wait(&status);
+			printf("my child %d has terminated! \n", pid);
 		}
 	}
 
-	if (fork_count == 1) {
-		printf("(n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n");
-		exit(0);
-	}
-
-	else if (fork_count == 2) {
-		
-	}
-	
-	else if (fork_count == 3) {
-	
-	}
-
-	else if (fork_count == 4) {
-	
-	}
-
-	if (pid > 0) {
-		pid = wait();
-		printf("my child %d has terminated!! :(", pid);
-	}
 }
 		
