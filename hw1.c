@@ -41,8 +41,8 @@ int main() {
 	int count = 0;
 	int i;
 
-	const char * cat_file = "cat";
-	char * const cat_args [] = {"ls -l", "", NULL};
+	const char * cat_file = "ls";
+	char * const cat_args [] = {"ls -l", NULL};
 
 	for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
 		pid = fork();
