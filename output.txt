@@ -1,0 +1,79 @@
+Script started on Thu 17 Sep 2015 04:10:18 PM EDT
+
+[parent, PID=4892] username: pianoner
+[parent, PID=4892] user id: 1000
+[parent, PID=4892] effective user id: 1000
+[parent, PID=4892] group id: 1000
+[parent, PID=4892] efffective group id: 1000
+[parent, PID=4892] pid: 4892
+[child 4, PID=4896] username: pianoner
+[child 4, PID=4896] user id: 1000
+[child 4, PID=4896] effective user id: 1000
+[child 4, PID=4896] group id: 1000
+[child 4, PID=4896] efffective group id: 1000
+[child 4, PID=4896] pid: 4896
+[child 4, PID=4896] parent PID: 4892. 
+[child 3, PID=4895] username: pianoner
+[child 3, PID=4895] user id: 1000
+[child 3, PID=4895] effective user id: 1000
+[child 3, PID=4895] group id: 1000
+[child 3, PID=4895] efffective group id: 1000
+[child 3, PID=4895] pid: 4895
+[child 3, PID=4895] parent PID: 4892. 
+[child 2, PID=4894] username: pianoner
+[child 2, PID=4894] user id: 1000
+[child 2, PID=4894] effective user id: 1000
+[child 2, PID=4894] group id: 1000
+[child 2, PID=4894] efffective group id: 1000
+[child 2, PID=4894] pid: 4894
+[child 2, PID=4894] parent PID: 4892. 
+[child 1, PID=4893] username: pianoner
+[child 1, PID=4893] user id: 1000
+[child 1, PID=4893] effective user id: 1000
+[child 1, PID=4893] group id: 1000
+[child 1, PID=4893] efffective group id: 1000
+[child 1, PID=4893] pid: 4893
+[child 1, PID=4893] parent PID: 4892. 
+[child 1, PID=4893] The process id 4893 (fork#1) announce that (n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! 
+[child 1, PID=4893] seconds since epoch: 1442520658
+[child 1, PID=4893] current time is Thu Sep 17 16:10:58 2015
+[child 1, PID=4893] user CPU time: 88000 us
+[child 1, PID=4893] system CPU time: 0 us
+[parent, PID=4892] process 4893 exited with status 0 
+[child 2, PID=4894] The process id 4894 (fork#2) produced the binomial coefficient 1 for integer 2. 
+[child 3, PID=4895] The process id 4895 (fork#3) produced the binomial coefficient 3 for integer 3. 
+[child 2, PID=4894] The process id 4894 (fork#2) produced the binomial coefficient 6 for integer 4. 
+[child 3, PID=4895] The process id 4895 (fork#3) produced the binomial coefficient 10 for integer 5. 
+[child 2, PID=4894] The process id 4894 (fork#2) produced the binomial coefficient 15 for integer 6. 
+[child 3, PID=4895] The process id 4895 (fork#3) produced the binomial coefficient 21 for integer 7. 
+[child 2, PID=4894] The process id 4894 (fork#2) produced the binomial coefficient 28 for integer 8. 
+[child 3, PID=4895] The process id 4895 (fork#3) produced the binomial coefficient 36 for integer 9. 
+[child 2, PID=4894] The process id 4894 (fork#2) produced the binomial coefficient 45 for integer 10. 
+[child 2, PID=4894] seconds since epoch: 1442520681
+[child 2, PID=4894] current time is Thu Sep 17 16:11:21 2015
+[child 2, PID=4894] user CPU time: 80000 us
+[child 2, PID=4894] system CPU time: 0 us
+[parent, PID=4892] process 4894 exited with status 0 
+[child 3, PID=4895] seconds since epoch: 1442520684
+[child 3, PID=4895] current time is Thu Sep 17 16:11:24 2015
+[child 3, PID=4895] user CPU time: 80000 us
+[child 3, PID=4895] system CPU time: 0 us
+[parent, PID=4892] process 4895 exited with status 0 
+[child 4, PID=4896] seconds since epoch: 1442520699
+[child 4, PID=4896] current time is Thu Sep 17 16:11:39 2015
+[child 4, PID=4896] user CPU time: 92000 us
+[child 4, PID=4896] system CPU time: 0 us
+total 40
+-rwxrwxr-x 1 pianonerd7 pianonerd7 14054 Sep 17 16:10 eecs338_hw01
+-rw-rw-r-- 1 pianonerd7 pianonerd7  5681 Sep 17 15:56 eecs338_hw01.c
+-rw-rw-r-- 1 pianonerd7 pianonerd7  5735 Sep 17 15:56 hw1.c~
+-rw-rw-r-- 1 pianonerd7 pianonerd7    41 Sep 17 16:05 Makefile
+-rw-rw-r-- 1 pianonerd7 pianonerd7    41 Sep 17 16:05 Makefile~
+-rw-rw-r-- 1 pianonerd7 pianonerd7     0 Sep 17 16:10 output.txt
+[parent, PID=4892] process 4896 exited with status 0 
+[parent, PID=4892] seconds since epoch: 1442520701
+[parent, PID=4892] current time is Thu Sep 17 16:11:41 2015
+[parent, PID=4892] user CPU time: 64000 us
+[parent, PID=4892] system CPU time: 0 us
+
+Script done on Thu 17 Sep 2015 04:11:45 PM EDT
