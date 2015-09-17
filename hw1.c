@@ -23,7 +23,7 @@ int print_if_error(int syscall) {
 
 void check_pid_error(int pid) {
 
-	if (pid == -1) {
+	if (pid < 0) {
 		perror("pid error");
 		exit(errno);
 	}
@@ -122,7 +122,9 @@ int main() {
 
 
 	else { //Parent
-		printf("I am the parent, my pid is %d\n.", getpid());
+		pid = getpid();
+		check_pid_error(pid);
+		printf("I am the parent, my pid is %d\n.", pid);
 
 		pid = wait(&status);
 		check_pid_error(pid);
