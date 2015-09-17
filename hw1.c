@@ -141,6 +141,12 @@ int main() {
 
 	char parent_proc_name[255];
 	get_proc_name("parent", parent_proc_name);
+	print_uids_gids(parent_proc_name);
+
+	char proc_name1[255];
+	char proc_name2[255];
+	char proc_name3[255];
+	char proc_name4[255];
 
 	const char * cat_file = "ls";
 	char * const cat_args [] = {"ls -l", NULL};
@@ -150,9 +156,21 @@ int main() {
 		pid = print_if_error(fork());
 
 		if (pid > 0) {//Parent process
-			
+
 		}
 		else if (pid == 0) { //Child process
+
+			switch(fork_count) {
+				case 1:
+					get_proc_name("child 1", proc_name1);
+				case 2:
+					get_proc_name("child 2", proc_name2);
+				case 3:
+					get_proc_name("child 3", proc_name3);
+				case 4:
+					get_proc_name("child 4", proc_name4);
+			}
+
 			break;
 		}
 	}
@@ -170,6 +188,8 @@ int main() {
 
 		if (fork_count == 1) {
 
+			print_uids_gids(proc_name1);
+
 			pid = getpid();
 			check_id_error(pid);
 
@@ -178,6 +198,8 @@ int main() {
 		}
 
 		else if (fork_count == 2) {
+
+			print_uids_gids(proc_name2);
 
 			sleep(3);
 			
@@ -193,6 +215,8 @@ int main() {
 	
 		else if (fork_count == 3) {
 
+			print_uids_gids(proc_name3);
+
 			sleep(5);
 
 			pid = getpid();
@@ -207,6 +231,8 @@ int main() {
 		}
 
 		else if (fork_count == 4) {
+
+			print_uids_gids(proc_name4);
 
 			sleep(30);
 			execvp(cat_file, cat_args);
