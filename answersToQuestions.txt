@@ -6,3 +6,19 @@ user id
 effective user id
 group id 
 effective group id
+
+cuserid()
+getuid()
+geteuid()
+getgid()
+getegid()
+
+The cuserid() is the is a pointer to a string that says what the current user name is. NULL pointer if information cannot be determined. 
+
+The getuid() is the real user ID of the calling process. The real user ID is the ID of the user that invoked the program.
+
+the geteuid() 
+
+
+Question 2
+Because the computer executes really quickly, without accumulating some nonzero time values, the time value would be less than microseconds and we wouldn't be able to see any value. By accumulating some nonzero time values, we are adding a constant so that we can see a non zero time value.
