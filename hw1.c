@@ -56,7 +56,7 @@ void getrusage_wrapper(struct rusage* output) {
 
 void print_uids_gids(const char* proc_name) {
 	
-	printf("[%s] username: %s\n]", proc_name, cuserid_wrapper());
+	printf("[%s] username: %s\n", proc_name, cuserid_wrapper());
 
 	//no error check necessary. syscalls always succeed.
 	printf("[%s] user id: %d\n", proc_name, getuid());
@@ -169,6 +169,8 @@ int main() {
 					get_proc_name("child 3", proc_name3);
 				case 4:
 					get_proc_name("child 4", proc_name4);
+				default:
+					break;
 			}
 
 			break;
@@ -194,6 +196,8 @@ int main() {
 			check_id_error(pid);
 
 			printf("The process id %d (fork#%d) announce that (n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n", pid, fork_count);
+
+			print_exec_times(proc_name1);
 			exit(0);
 		}
 
@@ -210,6 +214,8 @@ int main() {
 				printf("The process id %d (fork#%d) produced the binomial coefficient %d for integer %d. \n", pid, fork_count, binomialCoefficient(i, i-2), i);
 				sleep(4);
 			}
+
+			print_exec_times(proc_name2);
 			exit(0);
 		}
 	
@@ -227,6 +233,8 @@ int main() {
 				sleep(4);
 			}
 			sleep(4);
+
+			print_exec_times(proc_name3);
 			exit(0);
 		}
 
@@ -236,6 +244,8 @@ int main() {
 
 			sleep(30);
 			execvp(cat_file, cat_args);
+
+			print_exec_times(proc_name4);
 			exit(0);
 		}
 	}
@@ -248,7 +258,6 @@ int main() {
 
 		pid = wait(&status);
 		check_id_error(pid);
-		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 
 		pid = wait(&status);
 		check_id_error(pid);
