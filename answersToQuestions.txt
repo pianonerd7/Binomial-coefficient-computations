@@ -1,0 +1,8 @@
+Question 1
+
+cuserid()
+parent 
+user id
+effective user id
+group id 
+effective group id
