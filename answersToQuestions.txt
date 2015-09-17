@@ -1,23 +1,10 @@
 Question 1
 
-cuserid()
-parent 
-user id
-effective user id
-group id 
-effective group id
-
-cuserid()
-getuid()
-geteuid()
-getgid()
-getegid()
-
 The cuserid() is the is a pointer to a string that says what the current user name is. NULL pointer if information cannot be determined. 
 
-The getuid() is the real user ID of the calling process. The real user ID is the ID of the user that invoked the program.
+The getuid() is the real user ID of the calling process. The real user ID is the ID of the user that invoked the program. The geteuid() is the effective user ID of the calling process. Difference between effective and real UID is that if a program with a set uid bit set is run, the effecitve UID would be the id of the user who owns the file, while the real UID would be the id of the user who ran it.
 
-the geteuid() 
+The getgid() is the real group ID of the calling process. the getegid() is the effective group ID of the calling process. Smiliar to getuid() and geteuid() and how they are similar most of the time, differing only when setgid is used, this also applies to getgid() and getegid().
 
 
 Question 2
