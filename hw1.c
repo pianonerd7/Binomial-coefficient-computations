@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <unistd.h>
-
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/resource.h>
+#include <time.h>
 
 
 #define NUM_FORKS 4
@@ -17,6 +20,15 @@ int print_if_error(int syscall) {
 		return syscall;
 	}
 }
+
+void check_pid_error(int pid) {
+
+	if (pid == -1) {
+		perror("pid error");
+		exit(errno);
+	}
+}
+
 
 int binomialCoefficient(int n, int k) {
 
@@ -51,8 +63,6 @@ int main() {
 	pid_t pid;
 	int status;
 	int fork_count;
-
-	int count = 0;
 	int i;
 
 	const char * cat_file = "ls";
@@ -73,8 +83,6 @@ int main() {
 
 	if (pid == 0) { //Child
 		printf("I am child #%d and my pid is %d. My parent is %d. \n", fork_count, getpid(), getppid());
-	
-
 
 		if (fork_count == 1) {
 
@@ -90,7 +98,6 @@ int main() {
 				printf("%d binomailcoef of %d is %d \n", fork_count, i, binomialCoefficient(i, i-2));
 				sleep(4);
 			}
-			sleep(4);
 			exit(0);
 		}
 	
@@ -116,18 +123,21 @@ int main() {
 
 	else { //Parent
 		printf("I am the parent, my pid is %d\n.", getpid());
-		
 
 		pid = wait(&status);
+		check_pid_error(pid);
 		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 
 		pid = wait(&status);
+		check_pid_error(pid);
 		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 
 		pid = wait(&status);
+		check_pid_error(pid);
 		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 
 		pid = wait(&status);
+		check_pid_error(pid);
 		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 	
 	}
