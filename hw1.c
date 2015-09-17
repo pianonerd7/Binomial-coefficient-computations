@@ -1,8 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <unistd.h>
 
+
+
 #define NUM_FORKS 4
+
+int print_if_error(int syscall) {
+	
+	if (syscall < 0) {
+		perror("fork");
+		exit(errno);
+	}
+	else {
+		return syscall;
+	}
+}
 
 int binomialCoefficient(int n, int k) {
 
@@ -50,7 +64,8 @@ int main() {
 	char * const cat_args [] = {"ls -l", NULL};
 
 	for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
-		pid = fork();
+		
+		pid = print_if_error(fork());
 
 		if (pid > 0) {//Parent process
 			
@@ -106,31 +121,25 @@ int main() {
 			execvp(cat_file, cat_args);
 			exit(0);
 		}
-}
+	}
 
 
 	else { //Parent
 		printf("I am the parent, my pid is %d\n.", getpid());
 		
-/*
-		waitpid(fork1_pid, &status, 0);
-		printf("my child %d with fork %d has terminated. \n", 1, fork1_pid);
 
-		waitpid(fork2_pid, &status, 0);
-		printf("my child %d with fork %d has terminated. \n", 2, fork2_pid);
+		pid = wait(&status);
+		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 
-		waitpid(fork3_pid, &status, 0);
-		printf("my child %d with fork %d has terminated. \n", 3, fork3_pid);
+		pid = wait(&status);
+		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
 
-		waitpid(fork4_pid, &status, 0);
-		printf("my child %d with fork %d has terminated. \n", 4, fork4_pid);
-		*/
-		
-		for (fork_count = 1; fork_count <= NUM_FORKS; fork_count++) {
-			pid = wait(&status);
-			printf("my child %d with fork %d has terminated! \n", pid, fork_count);
-		}
-		
+		pid = wait(&status);
+		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
+
+		pid = wait(&status);
+		printf("process %d exited with status %d \n", pid, WEXITSTATUS(status));
+	
 	}
 
 }
