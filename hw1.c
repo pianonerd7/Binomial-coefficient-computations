@@ -55,11 +55,6 @@ int main() {
 	int count = 0;
 	int i;
 
-	int fork1_pid;
-	int fork2_pid;
-	int fork3_pid;
-	int fork4_pid;
-
 	const char * cat_file = "ls";
 	char * const cat_args [] = {"ls -l", NULL};
 
@@ -72,11 +67,6 @@ int main() {
 		}
 		else if (pid == 0) { //Child process
 			break;
-				
-		}
-		else {
-			perror("fork() failed \n");
-			exit(EXIT_FAILURE);
 		}
 	}
 
@@ -87,13 +77,13 @@ int main() {
 
 
 		if (fork_count == 1) {
-			fork1_pid = getpid();
+
 			printf("%d - (n(n-2)) binomial coefficient computations of integers n=2, 3, 10, start now! \n", getpid());
 			exit(0);
 		}
 
 		else if (fork_count == 2) {
-			fork2_pid = getpid();
+
 			sleep(3);
 
 			for (i = 2; i <= 10; i+=2) {
@@ -105,7 +95,7 @@ int main() {
 		}
 	
 		else if (fork_count == 3) {
-			fork3_pid = getpid();
+
 			sleep(5);
 
 			for (i = 3; i < 10; i+=2) {
@@ -116,7 +106,7 @@ int main() {
 		}
 
 		else if (fork_count == 4) {
-			fork4_pid = getpid();
+
 			sleep(30);
 			execvp(cat_file, cat_args);
 			exit(0);
