@@ -54,6 +54,18 @@ void getrusage_wrapper(struct rusage* output) {
 	}
 }
 
+void print_uids_gids(const char* proc_name) {
+	
+	printf("[%s] username: %s\n]", proc_name, cuserid_wrapper());
+
+	//no error check necessary. syscalls always succeed.
+	printf("[%s] user id: %d\n", proc_name, getuid());
+	printf("[%s] effective user id: %d\n", proc_name, geteuid());
+	printf("[%s] group id: %d\n", proc_name, getgid());
+	printf("[%s] efffective group id: %d\n", proc_name, getegid());
+	printf("[%s] pid: %d\n", proc_name, getpid());
+}
+
 void print_exec_times(const char* proc_name) {
 
 	int k = 0;
@@ -61,7 +73,7 @@ void print_exec_times(const char* proc_name) {
 
 	//accumulate some CPU time
 	for (i = 0; i < 100000000; i++) {
-		k+=2;
+		k++;
 	}
 	
 	time_t cur_time;
